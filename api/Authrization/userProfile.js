@@ -15,7 +15,7 @@ async (req,res) => {
   req.body.password = bcrypt.hashSync(req.body.password, salt)
 
     try {   
-    let sql = "UPDATE auth SET userName='"+req.body.userName+"',email ='"+req.body.email+"', password = '"+req.body.password+"',subject='"+req.body.subject+"',contactNumber='"+req.body.contactNumber+"',salary='"+req.body.salary+"' WHERE id='" + id + "'";
+    let sql = "UPDATE auth SET facultyName='"+req.body.facultyName+"',email ='"+req.body.email+"', password = '"+req.body.password+"',subject='"+req.body.subject+"',contactNumber='"+req.body.contactNumber+"',salary='"+req.body.salary+"' WHERE id='" + id + "'";
     let query = await dbConn.query(sql,(err, results) => { 
    if(err) {
      res.json({
@@ -44,7 +44,7 @@ async (req,res) => {
   router.post('/ViewProfile', checkToken, async (req, res) => {
     try {
       let id = req.body.id
-     let sql = "select userName,email, contactNumber, subject, salary from auth where id='" + id + "'";
+     let sql = "select emp_id, facultyName,email, contactNumber, subject, salary from auth where id='" + id + "'";
     let query = await dbConn.query(sql, (err, results) => {
       if(err) {
         res.status(500).json({
@@ -77,7 +77,7 @@ async (req,res) => {
   
   // Delete faculty Profile  //
   
-  router.post('/peofileDelete', checkToken, async (req, res) => {
+  router.post('/profileDelete', checkToken, async (req, res) => {
     try {
       let id = req.body.id
     let sql = "DELETE FROM auth WHERE id='" + id + "'";
@@ -153,7 +153,7 @@ async (req,res) => {
     router.post('/ViewstudentProfile', checkToken, async (req, res) => {
       try {
         let id = req.body.id
-       let sql = "select studentName,email, contactNumber, subject from studentauth where id='" + id + "'";
+       let sql = "select student_id, studentName,email, contactNumber, subject from studentauth where id='" + id + "'";
       let query = await dbConn.query(sql, (err, results) => {
         if(err) {
           res.status(500).json({

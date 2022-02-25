@@ -22,9 +22,9 @@ app.get('/' ,(req, res) => {
 
 app.use('/api/Authrization',require('./api/Authrization/auth'));
 app.use('/api/userProfile',require('./api/Authrization/userProfile'));
-app.use('/api/classManagement',require('./api/Instructor/classManagement'));
-app.use('/api/studentManagement',require('./api/Teacher/studentManagement'));
-app.use('/api/studentDashboard',require('./api/Student/studentDashboard'));
+app.use('/api/classManagement',require('./api/Admin/classManagement'));
+app.use('/api/teacher',require('./api/Teacher/teacher'));
+app.use('/api/student',require('./api/Student/student'));
 
 
 //listen the port
