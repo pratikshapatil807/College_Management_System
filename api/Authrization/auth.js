@@ -28,7 +28,7 @@ check('salary', 'Salary is required').not().isEmpty(),
     password:req.body.password,
     subject:req.body.subject,
     salary:req.body.salary,
-    profile: 'http:' + '//' + req.hostname + ':' + 5000 + '/' + req.file.path
+    profile: 'http:' + '//' + req.hostname + ':' + 5000 + '/' + req.file
   };
 
   // To encrypt the password 
@@ -120,7 +120,7 @@ console.log(employeeId);
         // SecretLey: randomPassword,
         emp_id: employeeId,
         email: mailOptions,
-        profile_url: `http://localhost:5000/profile/${req.file.filename}`
+        profile_url: `http://localhost:5000/profile/${req.file}`
       });
     }                
   });

@@ -7,7 +7,8 @@ const dbConn = mysql.createConnection({
     user: 'root',
     password: '',
     database: 'cmsDb',
-    dateStrings: true
+    dateStrings: true,
+    multipleStatements: true
 });
 
 dbConn.connect(function(error){
